@@ -1,0 +1,11 @@
+object Main extends App {
+  def nthGreatestDivisor(a:Int, n:Int, x:Int = 1): Int = {
+    if (n == 0) x-1
+    else if (a >= x){
+	    if (a%x == 0) nthGreatestDivisor(a, n - 1, x + 1)
+	    else nthGreatestDivisor(a, n, x + 1)
+	    }
+    else 1
+    }
+    println(nthGreatestDivisor(5, 2))
+}
