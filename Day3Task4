@@ -1,0 +1,25 @@
+object Main extends App {
+    def numOfDivisors(n:Int, x:Int = 2):Int = {
+        if (n == 1) 1
+        else if (x < n) 
+	{
+	    if (n > 2)
+	    {
+	    	if (n%x == 0) 1+numOfDivisors(n, x + 1)
+		else numOfDivisors(n, x + 1)
+	    }
+	    else 1
+	}
+	else 2
+    }
+    def sumOfDivisors(n:Int, x:Int = 1):Int = {
+	if (n == 1) 1
+        else if (n >= x){
+	    if (n%x == 0) x + sumOfDivisors(n, x + 1)
+	    else sumOfDivisors(n, x + 1)
+	    }
+        else 0
+    }
+    println(numOfDivisors(6)) // 1, 2, 3, 6	
+    println(sumOfDivisors(6)) // 1 + 2 + 3 + 6
+}
