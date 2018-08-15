@@ -1,0 +1,12 @@
+import Math.sqrt
+
+object Main extends App {
+
+    def isOdd(n:Int) : Boolean = n % 2 == 0
+    def isEven(n:Int) : Boolean = n % 2 != 0
+    def isSquared(n:Int) : Boolean = (sqrt(n)*10)%10 == 0
+    val n = 36
+    println(isOdd(n))
+    println(isEven(n))
+    println(isSquared(n))
+}
