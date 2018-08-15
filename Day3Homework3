@@ -1,0 +1,9 @@
+import Math.sqrt
+
+object Main extends App {
+  def binaryDivisors(n:Int, list:List[Int]=List(1)):List[Int] = {
+    if (n % (list.last*2)==0) binaryDivisors(n, list:::List(list.last*2))
+    else list.tail
+  }
+  println(binaryDivisors(16))
+}
