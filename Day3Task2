@@ -1,0 +1,15 @@
+import Math.sqrt
+
+object Main extends App {
+    def sumOfDigits(n:Int):Int = {
+	if (n/10 >= 1) n%10 + sumOfDigits(n/10)
+        else n
+    }
+    def compositionOfDigits(n:Int):Int = {
+	if (n/10 >= 1) (n%10) * compositionOfDigits(n/10)
+        else n
+    }
+    val n = 12345
+    println(sumOfDigits(n))
+    println(compositionOfDigits(n))
+}
