@@ -1,0 +1,10 @@
+import Math.sqrt
+
+object Main extends App {
+  def isPrime(n:Int, x:Int = 2): Boolean = {
+    if (x > sqrt(n)) true
+    else if (n%x == 0) false
+    else isPrime(n, x+1)
+  }
+  println(isPrime(1), isPrime(3), isPrime(4))
+}
