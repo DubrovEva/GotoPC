@@ -1,0 +1,20 @@
+object Main extends App {
+  def inList(list:List[Char], elem:Char):Boolean = {
+    if (list.head == elem) true
+    else if (list.length > 1) inList(list.tail, elem)
+    else false
+  }
+
+  def change(list:List[Char]):Int = {
+    val consonants =
+      List('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z')
+    val vowels = List('a', 'e', 'i', 'o', 'u')
+    if (list.length > 1 && inList(consonants, list.head) && inList(vowels, list.tail.head))
+      1+change(list.tail)
+    else if (list.length > 1 && inList(vowels, list.head) && inList(consonants, list.tail.head))
+     1+change(list.tail)
+    else if (list.length > 1) 0+change(list.tail)
+    else 0
+   }
+   println(change(List('a', 'b', 'a')))
+}
