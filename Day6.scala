@@ -23,12 +23,12 @@ class MapActor extends Actor with ActorLogging {
   def receive = {
     case r: Set =>
       state += r.key -> r.value
-      log.warning(s"Аукцион. Начальная цена -  ${r.value}")
+      log.warning(s"Аукцион - ${r.key}. Начальная цена -  ${r.value}")
     case r: Bet if (state.get(r.key) == None) =>
       log.warning(s"Unexpected: $r")
     case r: Bet if (state(r.key) <= r.value) =>
       log.warning(s"Продано ${r.key}")
-      state -= r.key 
+      state -= r.key
     case r: Bet if (currPrice < r.value) =>
       currPrice = r.value
       log.warning(s"Текущая цена - ${currPrice}")
@@ -55,6 +55,8 @@ class MainActor extends Actor with ActorLogging {
     mapActor ! Bet("house", 20)
     mapActor ! Set("car", 10)
     mapActor ! Bet("house", 1200)
+    mapActor ! Bet("cat", 1200)
     mapActor ! Bet("car", 1200)
   }
 }
+
