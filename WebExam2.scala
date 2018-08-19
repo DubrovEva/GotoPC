@@ -1,7 +1,7 @@
+
 import scala.util._
 import scala.concurrent._
 import scala.concurrent.duration._
-
 
 object Main extends App{
 
@@ -10,15 +10,17 @@ object Main extends App{
       val elem = list.head match {
         case Success(succ) => succ
         case Failure(ex) => None}
-      if (elem.getOrELse(None) == None) 1 + safeList(list.tail)
+      if (elem.get == None) 1 + safeList(list.tail)
       else 0+safeList(list.tail)
       }
     else {
       val elem = list.head match {
         case Success(succ) => succ
         case Failure(ex) => None}
-      if (elem == 0) 1
+      if (elem.get == None) 1
       else 0
     }
   }
+  val list : List[Try[Option[Any]]] = (List(Try(Option(1)), Try(Option(2)), Try(Option(None))))
+  println(safeList(list))
 }
